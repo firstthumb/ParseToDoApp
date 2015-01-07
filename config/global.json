@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "todo-app"
+        }, 
+        "todo-app": {
+            "applicationId": "YOUR-APP-ID", 
+            "masterKey": "YOUR-MASTER-KEY"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.3"
+    }
+}
