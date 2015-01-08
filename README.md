@@ -7,6 +7,6 @@ You can test it online [todo-app.parseapp.com][todo-app-online]
 [www.ekocaman.com][ekocaman-com]
 
 [todomvc-github]: https://github.com/tastejs/todomvc
-[parse-com]: www.parse.com
+[parse-com]: http://www.parse.com
 [todo-app-online]: http://todo-app.parseapp.com
 [ekocaman-com]: http://www.ekocaman.com
