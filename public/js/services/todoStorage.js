@@ -13,7 +13,9 @@ angular.module('todomvc')
 		
 		return Parse.Cloud.run('fetchTodo', {}).then(
 			function() {
-		    	return $injector.get('api');
+				var todoStorage = $injector.get('api');
+				todoStorage.get();
+		    	return todoStorage;
 		  	},
 		  	function() {
 		  		return $injector.get('localStorage');
@@ -51,13 +53,19 @@ angular.module('todomvc')
 
 				angular.copy(incompleteTodos, store.todos);
 
-				return $http.delete('/api/todos')
-					.then(function success() {
+				return Parse.Cloud.run('clearTodo', {}).then(
+					function(resp) {
 						return store.todos;
-					}, function error() {
-						angular.copy(originalTodos, store.todos);
-						return originalTodos;
-					});
+				  	}
+				);
+
+				//return $http.delete('/api/todos')
+				//	.then(function success() {
+				//		return store.todos;
+				//	}, function error() {
+				//		angular.copy(originalTodos, store.todos);
+				//		return originalTodos;
+				//	});
 			},
 
 			delete: function (todo) {
@@ -104,7 +112,7 @@ angular.module('todomvc')
 			insert: function (todo) {
 				var originalTodos = store.todos.slice(0);
 
-				return Parse.Cloud.run('saveTodo', {todo}).then(
+				return Parse.Cloud.run('saveTodo', {'todo': todo}).then(
 					function(resp) {
 						todo.id = resp;
 						store.todos.push(todo);
@@ -126,13 +134,19 @@ angular.module('todomvc')
 			put: function (todo) {
 				var originalTodos = store.todos.slice(0);
 
-				return $http.put('/api/todos/' + todo.id, todo)
-					.then(function success() {
+				return Parse.Cloud.run('updateTodo', {'todo': todo}).then(
+					function(resp) {
 						return store.todos;
-					}, function error() {
-						angular.copy(originalTodos, store.todos);
-						return originalTodos;
-					});
+				  	}
+				);
+
+				//return $http.put('/api/todos/' + todo.id, todo)
+				//	.then(function success() {
+				//		return store.todos;
+				//	}, function error() {
+				//		angular.copy(originalTodos, store.todos);
+				//		return originalTodos;
+				//	});
 			}
 		};
 

@@ -44,7 +44,9 @@ angular.module('todomvc')
 				.then(function success() {
 					$scope.newTodo = '';
 				})
-				.finally(function () {
+				.then(function () {
+					$scope.saving = false;
+				}, function () {
 					$scope.saving = false;
 				});
 		};
@@ -81,7 +83,9 @@ angular.module('todomvc')
 				.then(function success() {}, function error() {
 					todo.title = $scope.originalTodo.title;
 				})
-				.finally(function () {
+				.then(function () {
+					$scope.editedTodo = null;
+				}, function () {
 					$scope.editedTodo = null;
 				});
 		};
