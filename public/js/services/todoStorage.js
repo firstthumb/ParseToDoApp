@@ -21,15 +21,6 @@ angular.module('todomvc')
 		  		return $injector.get('localStorage');
 		  	}
 		);
-
-		// Detect if an API backend is present. If so, return the API module, else
-		// hand off the localStorage adapter
-		//return $http.get('http://todo-app.parseapp.com/#//api')
-		//	.then(function () {
-		//		return $injector.get('api');
-		//	}, function () {
-		//		return $injector.get('localStorage');
-		//	});
 	})
 
 	.factory('api', function ($http) {
@@ -58,14 +49,6 @@ angular.module('todomvc')
 						return store.todos;
 				  	}
 				);
-
-				//return $http.delete('/api/todos')
-				//	.then(function success() {
-				//		return store.todos;
-				//	}, function error() {
-				//		angular.copy(originalTodos, store.todos);
-				//		return originalTodos;
-				//	});
 			},
 
 			delete: function (todo) {
@@ -81,14 +64,6 @@ angular.module('todomvc')
 						return store.todos;
 				  	}
 				);
-
-				//return $http.delete('/api/todos/' + todo.id)
-				//	.then(function success() {
-				//		return store.todos;
-				//	}, function error() {
-				//		angular.copy(originalTodos, store.todos);
-				//		return originalTodos;
-				//	});
 			},
 
 			get: function () {
@@ -101,12 +76,6 @@ angular.module('todomvc')
 						return store.todos;
 				  	}
 				);
-
-				//return $http.get('/api/todos')
-				//	.then(function (resp) {
-				//		angular.copy(resp.data, store.todos);
-				//		return store.todos;
-				//	});
 			},
 
 			insert: function (todo) {
@@ -119,16 +88,6 @@ angular.module('todomvc')
 						return store.todos;
 				  	}
 				);
-
-				//return $http.post('/api/todos', todo)
-				//	.then(function success(resp) {
-				//		todo.id = resp.data.id;
-				//		store.todos.push(todo);
-				//		return store.todos;
-				//	}, function error() {
-				//		angular.copy(originalTodos, store.todos);
-				//		return store.todos;
-				//	});
 			},
 
 			put: function (todo) {
@@ -139,14 +98,6 @@ angular.module('todomvc')
 						return store.todos;
 				  	}
 				);
-
-				//return $http.put('/api/todos/' + todo.id, todo)
-				//	.then(function success() {
-				//		return store.todos;
-				//	}, function error() {
-				//		angular.copy(originalTodos, store.todos);
-				//		return originalTodos;
-				//	});
 			}
 		};
 

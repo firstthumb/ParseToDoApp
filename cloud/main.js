@@ -1,22 +1,17 @@
-
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("hello", function(request, response) {
-  	response.success("Hello world!");
-});
-
+// Fetch all Todo
 Parse.Cloud.define("fetchTodo", function(request, response) {
 	var query = new Parse.Query("Todo");
 	query.find({
     	success: function(results) {
       		response.success(results);
     	},
-    	error: function() {
-      		response.error("Failed");
+    	error: function(error) {
+      		response.error(error);
     	}
   	});
 });
 
+// Save Todo
 Parse.Cloud.define("saveTodo", function(request, response) {
 	var Todo = Parse.Object.extend("Todo");
 	var todo = new Todo();
@@ -35,6 +30,7 @@ Parse.Cloud.define("saveTodo", function(request, response) {
 	});
 });
 
+// Delete Todo - todoId request parameter
 Parse.Cloud.define("deleteTodo", function(request, response) {
 	var query = new Parse.Query("Todo");
 	query.get(request.params.todoId, {
@@ -49,6 +45,7 @@ Parse.Cloud.define("deleteTodo", function(request, response) {
 	});
 });
 
+// Clear all Todo
 Parse.Cloud.define("clearTodo", function(request, response) {
 	var query = new Parse.Query("Todo");
 	query.find({
@@ -69,6 +66,7 @@ Parse.Cloud.define("clearTodo", function(request, response) {
 	});
 });
 
+// Update Todo - Todo Object as request parameter
 Parse.Cloud.define("updateTodo", function(request, response) {
 	var query = new Parse.Query("Todo");
 	var title = request.params.todo.title;
