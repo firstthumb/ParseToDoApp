@@ -1,5 +1,5 @@
 # ToDo Application with Parse Cloud
-===
+
 This is just a simple ToDo Application. Only backend side is developer with [Parse Cloud][parse-com] and integrated with [TodoMVC AngularJS][todomvc-github] project
 
 You can test it online [todo-app.parseapp.com][todo-app-online]
