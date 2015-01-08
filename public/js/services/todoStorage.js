@@ -53,13 +53,11 @@ angular.module('todomvc')
 
 			delete: function (todo) {
 				var originalTodos = store.todos.slice(0);
-				alert(JSON.stringify(todo));
 				var todoId = todo.id;
-				alert(todoId);
 
 				store.todos.splice(store.todos.indexOf(todo), 1);
 
-				return Parse.Cloud.run('deleteTodo', {'todoId':todoId}).then(
+				return Parse.Cloud.run('deleteTodo', {'todoId': todoId}).then(
 					function(resp) {
 						return store.todos;
 				  	}
@@ -72,7 +70,6 @@ angular.module('todomvc')
 						for (var i = resp.length - 1; i >= 0; i--) {
 							store.todos.push({'id': resp[i].id, 'title': resp[i].get('title'), 'completed': resp[i].get('completed')});
 						};
-				    	//angular.copy(resp, store.todos);
 						return store.todos;
 				  	}
 				);
